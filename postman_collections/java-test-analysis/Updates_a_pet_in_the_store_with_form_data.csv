@@ -1,0 +1,6 @@
+petId,name,status,statusCode,scenario  
+12345,"doggie","available",405,"Invalid input"  
+98765,"random/\”invalid\”","invalid_status",405,"Invalid input"  
+54321,"anotherName","pending",405,"Invalid input"  
+67890,"invalidName","wrongValue",405,"Invalid input"  
+13579,"escaped/\”wrong\”","sold",405,"Invalid input"  

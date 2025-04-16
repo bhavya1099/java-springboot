@@ -1,0 +1,2937 @@
+{
+  "item": [
+    {
+      "id": "3dc5d66a-11cc-4b15-ab14-d12dd9e63913",
+      "name": "pet",
+      "item": [
+        {
+          "id": "842619b3-d461-4561-801b-1eabba6b1d49",
+          "name": "Add a new pet to the store",
+          "request": {
+            "name": "Add a new pet to the store",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pet"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:pets write:pets"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://petstore.swagger.io/oauth/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "implicit"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"{{name}}\",\n    \"photoUrls\": [\n        \"{{photoUrls}}\"\n    ],\n    \"id\": \"{{id}}\",\n    \"category\": {\n        \"id\": \"{{category.id}}\",\n        \"name\": \"{{category.name}}\"\n    },\n    \"tags\": [\n        \"{{tags}}\"\n    ],\n    \"status\": \"{{status}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8286a4e5-3a6b-4d23-b9f9-48040b00d290",
+              "name": "Invalid input",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "{{Authorization}}"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// ------------existing_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n});\n\n// ------------import_details------------\n\nconst { apiTestClient } = require('./testUtils');\nconst { expect } = require('chai');\n\n// ------------source_code------------\n\nasync function handleEndpointC(request, response) {\n  const { query } = request;\n  const processedData = await processQuery(query); // New method for query processing\n  response.status(200).send({ result: processedData, success: true });\n}\n\nasync function processQuery(query) {\n  // Logic for processing queries based on new business requirements\n  return { query, processedData: query.toUpperCase() };\n}\n\n// ------------updated_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n\n  // Newly added test case for updated source code\n  it('should correctly process query for endpoint C', async () => {\n    const queryParams = { q: 'testQuery' };\n    const response = await apiTestClient.get('/api/v1/endpointC', { params: queryParams });\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('result');\n    expect(response.data.result).toHaveProperty('query', 'testQuery');\n    expect(response.data.result).toHaveProperty('processedData', 'TESTQUERY');\n    expect(response.data).toHaveProperty('success', true);\n  });\n});\n"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0414cb5-c0e5-4f09-9d03-d9f1f0f576c7",
+          "name": "Update an existing pet",
+          "request": {
+            "name": "Update an existing pet",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pet"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:pets write:pets"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://petstore.swagger.io/oauth/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "implicit"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"{{name}}\",\n    \"photoUrls\": [\n        \"{{photoUrls}}\"\n    ],\n    \"id\": \"{{id}}\",\n    \"category\": {\n        \"id\": \"{{category.id}}\",\n        \"name\": \"{{category.name}}\"\n    },\n    \"tags\": [\n        \"{{tags}}\"\n    ],\n    \"status\": \"{{status}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9a8f7eb8-fc08-4f58-a64a-fb7eef0e4605",
+              "name": "Invalid ID supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "{{Authorization}}"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9b61b96a-f037-4c8b-b4a3-b46911c39ad7",
+              "name": "Pet not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "{{Authorization}}"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f1c88483-2ee2-43e6-af6b-b9e9395e0949",
+              "name": "Validation exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "{{Authorization}}"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// ------------existing_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n});\n\n// ------------import_details------------\n\nconst { apiTestClient } = require('./testUtils');\nconst { expect } = require('chai');\n\n// ------------source_code------------\n\nasync function handleEndpointC(request, response) {\n  const { query } = request;\n  const processedData = await processQuery(query); // New method for query processing\n  response.status(200).send({ result: processedData, success: true });\n}\n\nasync function processQuery(query) {\n  // Logic for processing queries based on new business requirements\n  return { query, processedData: query.toUpperCase() };\n}\n\n// ------------updated_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n\n  // Newly added test case for updated source code\n  it('should correctly process query for endpoint C', async () => {\n    const queryParams = { q: 'testQuery' };\n    const response = await apiTestClient.get('/api/v1/endpointC', { params: queryParams });\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('result');\n    expect(response.data.result).toHaveProperty('query', 'testQuery');\n    expect(response.data.result).toHaveProperty('processedData', 'TESTQUERY');\n    expect(response.data).toHaveProperty('success', true);\n  });\n});\n"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5918dfa-b80e-4dfc-9098-58b13a339c02",
+          "name": "{petId}",
+          "item": [
+            {
+              "id": "889ca593-7b24-4bcb-a8db-a1d02c90be7a",
+              "name": "Find pet by ID",
+              "request": {
+                "name": "Find pet by ID",
+                "description": {
+                  "content": "Returns a single pet",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "pet",
+                    ":petId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "{{petId}}",
+                      "key": "petId",
+                      "description": "(Required) ID of pet to return"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "api_key"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "05f5e76f-157b-4dff-b679-f95daa4b3336",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "pet",
+                        ":petId"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "{{petId}}",
+                          "key": "petId",
+                          "description": "(Required) ID of pet to return"
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "description": {
+                          "content": "Added as a part of security scheme: apikey",
+                          "type": "text/plain"
+                        },
+                        "key": "api_key",
+                        "value": "{{api_key}}"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"name\": \"doggie\",\n  \"photoUrls\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"id\": \"<long>\",\n  \"category\": {\n    \"id\": \"<long>\",\n    \"name\": \"<string>\"\n  },\n  \"tags\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    }\n  ],\n  \"status\": \"<string>\"\n}",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                },
+                {
+                  "id": "407d36d7-84db-48b1-aaf7-b763ec50c23d",
+                  "name": "Invalid ID supplied",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "pet",
+                        ":petId"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "{{petId}}",
+                          "key": "petId",
+                          "description": "(Required) ID of pet to return"
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "description": {
+                          "content": "Added as a part of security scheme: apikey",
+                          "type": "text/plain"
+                        },
+                        "key": "api_key",
+                        "value": "{{api_key}}"
+                      }
+                    ],
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "body": "",
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                },
+                {
+                  "id": "232d55b6-b27c-4d8c-b25f-f74e6f7aa9c6",
+                  "name": "Pet not found",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "pet",
+                        ":petId"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "{{petId}}",
+                          "key": "petId",
+                          "description": "(Required) ID of pet to return"
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "description": {
+                          "content": "Added as a part of security scheme: apikey",
+                          "type": "text/plain"
+                        },
+                        "key": "api_key",
+                        "value": "{{api_key}}"
+                      }
+                    ],
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "body": "",
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "// ------------existing_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n});\n\n// ------------import_details------------\n\nconst { apiTestClient } = require('./testUtils');\nconst { expect } = require('chai');\n\n// ------------source_code------------\n\nasync function handleEndpointC(request, response) {\n  const { query } = request;\n  const processedData = await processQuery(query); // New method for query processing\n  response.status(200).send({ result: processedData, success: true });\n}\n\nasync function processQuery(query) {\n  // Logic for processing queries based on new business requirements\n  return { query, processedData: query.toUpperCase() };\n}\n\n// ------------updated_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n\n  // Newly added test case for updated source code\n  it('should correctly process query for endpoint C', async () => {\n    const queryParams = { q: 'testQuery' };\n    const response = await apiTestClient.get('/api/v1/endpointC', { params: queryParams });\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('result');\n    expect(response.data.result).toHaveProperty('query', 'testQuery');\n    expect(response.data.result).toHaveProperty('processedData', 'TESTQUERY');\n    expect(response.data).toHaveProperty('success', true);\n  });\n});\n"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            },
+            {
+              "id": "831c70da-2414-45c4-b3b2-a14c8a424bdf",
+              "name": "Updates a pet in the store with form data",
+              "request": {
+                "name": "Updates a pet in the store with form data",
+                "description": {
+                  "content": "",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "pet",
+                    ":petId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "{{petId}}",
+                      "key": "petId",
+                      "description": "(Required) ID of pet that needs to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  }
+                ],
+                "method": "POST",
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "read:pets write:pets"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://petstore.swagger.io/oauth/authorize"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "implicit"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "name",
+                      "value": "{{name}}",
+                      "description": "Updated name of the pet"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "status",
+                      "value": "{{status}}",
+                      "description": "Updated status of the pet"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "cdc046b1-2f07-499e-848d-c7291042431a",
+                  "name": "Invalid input",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "pet",
+                        ":petId"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "{{petId}}",
+                          "key": "petId",
+                          "description": "(Required) ID of pet that needs to be updated"
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "description": {
+                          "content": "Added as a part of security scheme: oauth2",
+                          "type": "text/plain"
+                        },
+                        "key": "Authorization",
+                        "value": "{{Authorization}}"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Updated name of the pet",
+                            "type": "text/plain"
+                          },
+                          "key": "name",
+                          "value": "{{name}}"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Updated status of the pet",
+                            "type": "text/plain"
+                          },
+                          "key": "status",
+                          "value": "{{status}}"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Method Not Allowed",
+                  "code": 405,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "body": "",
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "// ------------existing_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n});\n\n// ------------import_details------------\n\nconst { apiTestClient } = require('./testUtils');\nconst { expect } = require('chai');\n\n// ------------source_code------------\n\nasync function handleEndpointC(request, response) {\n  const { query } = request;\n  const processedData = await processQuery(query); // New method for query processing\n  response.status(200).send({ result: processedData, success: true });\n}\n\nasync function processQuery(query) {\n  // Logic for processing queries based on new business requirements\n  return { query, processedData: query.toUpperCase() };\n}\n\n// ------------updated_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n\n  // Newly added test case for updated source code\n  it('should correctly process query for endpoint C', async () => {\n    const queryParams = { q: 'testQuery' };\n    const response = await apiTestClient.get('/api/v1/endpointC', { params: queryParams });\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('result');\n    expect(response.data.result).toHaveProperty('query', 'testQuery');\n    expect(response.data.result).toHaveProperty('processedData', 'TESTQUERY');\n    expect(response.data).toHaveProperty('success', true);\n  });\n});\n"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            },
+            {
+              "id": "6dfd6ca7-a951-4503-b3dd-a123f65ffb8a",
+              "name": "Deletes a pet",
+              "request": {
+                "name": "Deletes a pet",
+                "description": {
+                  "content": "",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "pet",
+                    ":petId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "{{petId}}",
+                      "key": "petId",
+                      "description": "(Required) Pet id to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "api_key",
+                    "value": "{{api_key}}",
+                    "description": ""
+                  }
+                ],
+                "method": "DELETE",
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "read:pets write:pets"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://petstore.swagger.io/oauth/authorize"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "implicit"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "46f8ec80-2eee-446c-84d0-e7a91d186fc3",
+                  "name": "Invalid ID supplied",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "pet",
+                        ":petId"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "{{petId}}",
+                          "key": "petId",
+                          "description": "(Required) Pet id to delete"
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "description": {
+                          "content": "Added as a part of security scheme: oauth2",
+                          "type": "text/plain"
+                        },
+                        "key": "Authorization",
+                        "value": "{{Authorization}}"
+                      },
+                      {
+                        "disabled": false,
+                        "key": "api_key",
+                        "value": "{{api_key}}",
+                        "description": ""
+                      }
+                    ],
+                    "method": "DELETE",
+                    "body": {}
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "body": "",
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                },
+                {
+                  "id": "3812fdd9-7dd9-4313-bb01-ad7f8356af6f",
+                  "name": "Pet not found",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "pet",
+                        ":petId"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "{{petId}}",
+                          "key": "petId",
+                          "description": "(Required) Pet id to delete"
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "description": {
+                          "content": "Added as a part of security scheme: oauth2",
+                          "type": "text/plain"
+                        },
+                        "key": "Authorization",
+                        "value": "{{Authorization}}"
+                      },
+                      {
+                        "disabled": false,
+                        "key": "api_key",
+                        "value": "{{api_key}}",
+                        "description": ""
+                      }
+                    ],
+                    "method": "DELETE",
+                    "body": {}
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "body": "",
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "// ------------existing_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n});\n\n// ------------import_details------------\n\nconst { apiTestClient } = require('./testUtils');\nconst { expect } = require('chai');\n\n// ------------source_code------------\n\nasync function handleEndpointC(request, response) {\n  const { query } = request;\n  const processedData = await processQuery(query); // New method for query processing\n  response.status(200).send({ result: processedData, success: true });\n}\n\nasync function processQuery(query) {\n  // Logic for processing queries based on new business requirements\n  return { query, processedData: query.toUpperCase() };\n}\n\n// ------------updated_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n\n  // Newly added test case for updated source code\n  it('should correctly process query for endpoint C', async () => {\n    const queryParams = { q: 'testQuery' };\n    const response = await apiTestClient.get('/api/v1/endpointC', { params: queryParams });\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('result');\n    expect(response.data.result).toHaveProperty('query', 'testQuery');\n    expect(response.data.result).toHaveProperty('processedData', 'TESTQUERY');\n    expect(response.data).toHaveProperty('success', true);\n  });\n});\n"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            },
+            {
+              "id": "f4ee3818-2c0c-430e-af43-1aa8defb35b5",
+              "name": "uploads an image",
+              "request": {
+                "name": "uploads an image",
+                "description": {
+                  "content": "",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "pet",
+                    ":petId",
+                    "uploadImage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "{{petId}}",
+                      "key": "petId",
+                      "description": "(Required) ID of pet to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "scope",
+                      "value": "read:pets write:pets"
+                    },
+                    {
+                      "key": "authUrl",
+                      "value": "https://petstore.swagger.io/oauth/authorize"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "implicit"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "additionalMetadata",
+                      "value": "{{additionalMetadata}}",
+                      "type": "text",
+                      "description": "Additional data to pass to server"
+                    },
+                    {
+                      "key": "file",
+                      "type": "file",
+                      "description": "file to upload"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "7e4d8048-3c7c-47a8-beb6-fce00b830568",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "pet",
+                        ":petId",
+                        "uploadImage"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "{{petId}}",
+                          "key": "petId",
+                          "description": "(Required) ID of pet to update"
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "description": {
+                          "content": "Added as a part of security scheme: oauth2",
+                          "type": "text/plain"
+                        },
+                        "key": "Authorization",
+                        "value": "{{Authorization}}"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": {
+                            "content": "Additional data to pass to server",
+                            "type": "text/plain"
+                          },
+                          "key": "additionalMetadata",
+                          "value": "{{additionalMetadata}}",
+                          "type": "text"
+                        },
+                        {
+                          "description": {
+                            "content": "file to upload",
+                            "type": "text/plain"
+                          },
+                          "key": "file",
+                          "value": "{{file}}",
+                          "type": "text"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"code\": 32686281,\n  \"type\": \"dolor eu\",\n  \"message\": \"laborum\"\n}",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "// ------------existing_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n});\n\n// ------------import_details------------\n\nconst { apiTestClient } = require('./testUtils');\nconst { expect } = require('chai');\n\n// ------------source_code------------\n\nasync function handleEndpointC(request, response) {\n  const { query } = request;\n  const processedData = await processQuery(query); // New method for query processing\n  response.status(200).send({ result: processedData, success: true });\n}\n\nasync function processQuery(query) {\n  // Logic for processing queries based on new business requirements\n  return { query, processedData: query.toUpperCase() };\n}\n\n// ------------updated_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n\n  // Newly added test case for updated source code\n  it('should correctly process query for endpoint C', async () => {\n    const queryParams = { q: 'testQuery' };\n    const response = await apiTestClient.get('/api/v1/endpointC', { params: queryParams });\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('result');\n    expect(response.data.result).toHaveProperty('query', 'testQuery');\n    expect(response.data.result).toHaveProperty('processedData', 'TESTQUERY');\n    expect(response.data).toHaveProperty('success', true);\n  });\n});\n"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "e53b25d4-325d-4011-a34e-4687ca62bc5b",
+          "name": "Finds Pets by status",
+          "request": {
+            "name": "Finds Pets by status",
+            "description": {
+              "content": "Multiple status values can be provided with comma separated strings",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pet",
+                "findByStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "{{status}}",
+                  "description": "(Required) Status values that need to be considered for filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "{{status}}",
+                  "description": "(Required) Status values that need to be considered for filter"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:pets write:pets"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://petstore.swagger.io/oauth/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "implicit"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "71489e72-b6bc-4cc0-8fdf-df6e753ca56e",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pet",
+                    "findByStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "{{status}}"
+                    },
+                    {
+                      "key": "status",
+                      "value": "{{status}}"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "{{Authorization}}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"doggie\",\n    \"photoUrls\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"id\": \"<long>\",\n    \"category\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    \"tags\": [\n      {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"status\": \"<string>\"\n  },\n  {\n    \"name\": \"doggie\",\n    \"photoUrls\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"id\": \"<long>\",\n    \"category\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    \"tags\": [\n      {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"status\": \"<string>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b941c5ca-13a7-4072-9b6f-9ac2099b93b3",
+              "name": "Invalid status value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pet",
+                    "findByStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "{{status}}"
+                    },
+                    {
+                      "key": "status",
+                      "value": "{{status}}"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "{{Authorization}}"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// ------------existing_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n});\n\n// ------------import_details------------\n\nconst { apiTestClient } = require('./testUtils');\nconst { expect } = require('chai');\n\n// ------------source_code------------\n\nasync function handleEndpointC(request, response) {\n  const { query } = request;\n  const processedData = await processQuery(query); // New method for query processing\n  response.status(200).send({ result: processedData, success: true });\n}\n\nasync function processQuery(query) {\n  // Logic for processing queries based on new business requirements\n  return { query, processedData: query.toUpperCase() };\n}\n\n// ------------updated_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n\n  // Newly added test case for updated source code\n  it('should correctly process query for endpoint C', async () => {\n    const queryParams = { q: 'testQuery' };\n    const response = await apiTestClient.get('/api/v1/endpointC', { params: queryParams });\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('result');\n    expect(response.data.result).toHaveProperty('query', 'testQuery');\n    expect(response.data.result).toHaveProperty('processedData', 'TESTQUERY');\n    expect(response.data).toHaveProperty('success', true);\n  });\n});\n"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c6f2057-4a96-4f68-bbc8-7d0709d9e63a",
+          "name": "Finds Pets by tags",
+          "request": {
+            "name": "Finds Pets by tags",
+            "description": {
+              "content": "Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pet",
+                "findByTags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "{{tags}}",
+                  "description": "(Required) Tags to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "{{tags}}",
+                  "description": "(Required) Tags to filter by"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "read:pets write:pets"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://petstore.swagger.io/oauth/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "implicit"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "39c6f1c9-f3d8-49cf-b7df-f29c0cb8675d",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pet",
+                    "findByTags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tags",
+                      "value": "{{tags}}"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "{{tags}}"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "{{Authorization}}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"doggie\",\n    \"photoUrls\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"id\": \"<long>\",\n    \"category\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    \"tags\": [\n      {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"status\": \"<string>\"\n  },\n  {\n    \"name\": \"doggie\",\n    \"photoUrls\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"id\": \"<long>\",\n    \"category\": {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\"\n    },\n    \"tags\": [\n      {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"id\": \"<long>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"status\": \"<string>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1130ece6-7ba2-49bb-90d7-557a8c77e800",
+              "name": "Invalid tag value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pet",
+                    "findByTags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tags",
+                      "value": "{{tags}}"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "{{tags}}"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "{{Authorization}}"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// ------------existing_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n});\n\n// ------------import_details------------\n\nconst { apiTestClient } = require('./testUtils');\nconst { expect } = require('chai');\n\n// ------------source_code------------\n\nasync function handleEndpointC(request, response) {\n  const { query } = request;\n  const processedData = await processQuery(query); // New method for query processing\n  response.status(200).send({ result: processedData, success: true });\n}\n\nasync function processQuery(query) {\n  // Logic for processing queries based on new business requirements\n  return { query, processedData: query.toUpperCase() };\n}\n\n// ------------updated_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n\n  // Newly added test case for updated source code\n  it('should correctly process query for endpoint C', async () => {\n    const queryParams = { q: 'testQuery' };\n    const response = await apiTestClient.get('/api/v1/endpointC', { params: queryParams });\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('result');\n    expect(response.data.result).toHaveProperty('query', 'testQuery');\n    expect(response.data.result).toHaveProperty('processedData', 'TESTQUERY');\n    expect(response.data).toHaveProperty('success', true);\n  });\n});\n"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "aa1152e7-b311-49a2-97f3-9e7da62b7f3e",
+      "name": "store",
+      "item": [
+        {
+          "id": "f89f2af5-8b6c-4add-9530-dfb96d2f15c1",
+          "name": "Returns pet inventories by status",
+          "request": {
+            "name": "Returns pet inventories by status",
+            "description": {
+              "content": "Returns a map of status codes to quantities",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "store",
+                "inventory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "api_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "da82df65-3730-4441-b3ef-c1c14afbb4b9",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "store",
+                    "inventory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "api_key",
+                    "value": "{{api_key}}"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cillum_962\": 72407565\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// ------------existing_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n});\n\n// ------------import_details------------\n\nconst { apiTestClient } = require('./testUtils');\nconst { expect } = require('chai');\n\n// ------------source_code------------\n\nasync function handleEndpointC(request, response) {\n  const { query } = request;\n  const processedData = await processQuery(query); // New method for query processing\n  response.status(200).send({ result: processedData, success: true });\n}\n\nasync function processQuery(query) {\n  // Logic for processing queries based on new business requirements\n  return { query, processedData: query.toUpperCase() };\n}\n\n// ------------updated_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n\n  // Newly added test case for updated source code\n  it('should correctly process query for endpoint C', async () => {\n    const queryParams = { q: 'testQuery' };\n    const response = await apiTestClient.get('/api/v1/endpointC', { params: queryParams });\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('result');\n    expect(response.data.result).toHaveProperty('query', 'testQuery');\n    expect(response.data.result).toHaveProperty('processedData', 'TESTQUERY');\n    expect(response.data).toHaveProperty('success', true);\n  });\n});\n"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "893f817e-3b2e-47b9-93a3-c605ebe35e45",
+          "name": "order",
+          "item": [
+            {
+              "id": "c0a30721-4bc1-466c-acb7-d23205215f6f",
+              "name": "Place an order for a pet",
+              "request": {
+                "name": "Place an order for a pet",
+                "description": {
+                  "content": "",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "store",
+                    "order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "auth": null,
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"id\": \"{{id}}\",\n    \"petId\": \"{{petId}}\",\n    \"quantity\": \"{{quantity}}\",\n    \"shipDate\": \"{{shipDate}}\",\n    \"status\": \"{{status}}\",\n    \"complete\": \"{{complete}}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [
+                {
+                  "id": "f19030f1-5b36-4343-8560-1a68613924e6",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "store",
+                        "order"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"id\": \"{{id}}\",\n    \"petId\": \"{{petId}}\",\n    \"quantity\": \"{{quantity}}\",\n    \"shipDate\": \"{{shipDate}}\",\n    \"status\": \"{{status}}\",\n    \"complete\": \"{{complete}}\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"id\": \"<long>\",\n  \"petId\": \"<long>\",\n  \"quantity\": \"<integer>\",\n  \"shipDate\": \"<dateTime>\",\n  \"status\": \"<string>\",\n  \"complete\": \"<boolean>\"\n}",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                },
+                {
+                  "id": "978d82ad-b165-4424-8977-9b7f7420ea4e",
+                  "name": "Invalid Order",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "store",
+                        "order"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": []
+                    },
+                    "method": "POST",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"id\": \"{{id}}\",\n    \"petId\": \"{{petId}}\",\n    \"quantity\": \"{{quantity}}\",\n    \"shipDate\": \"{{shipDate}}\",\n    \"status\": \"{{status}}\",\n    \"complete\": \"{{complete}}\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "body": "",
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "// ------------existing_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n});\n\n// ------------import_details------------\n\nconst { apiTestClient } = require('./testUtils');\nconst { expect } = require('chai');\n\n// ------------source_code------------\n\nasync function handleEndpointC(request, response) {\n  const { query } = request;\n  const processedData = await processQuery(query); // New method for query processing\n  response.status(200).send({ result: processedData, success: true });\n}\n\nasync function processQuery(query) {\n  // Logic for processing queries based on new business requirements\n  return { query, processedData: query.toUpperCase() };\n}\n\n// ------------updated_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n\n  // Newly added test case for updated source code\n  it('should correctly process query for endpoint C', async () => {\n    const queryParams = { q: 'testQuery' };\n    const response = await apiTestClient.get('/api/v1/endpointC', { params: queryParams });\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('result');\n    expect(response.data.result).toHaveProperty('query', 'testQuery');\n    expect(response.data.result).toHaveProperty('processedData', 'TESTQUERY');\n    expect(response.data).toHaveProperty('success', true);\n  });\n});\n"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            },
+            {
+              "id": "3fb9aaaf-247f-48df-9de1-14428702fe01",
+              "name": "{orderId}",
+              "item": [
+                {
+                  "id": "b046f15b-9223-4d1f-a812-0720284eb608",
+                  "name": "Find purchase order by ID",
+                  "request": {
+                    "name": "Find purchase order by ID",
+                    "description": {
+                      "content": "For valid response try integer IDs with value >= 1 and <= 10. Other values will generated exceptions",
+                      "type": "text/plain"
+                    },
+                    "url": {
+                      "path": [
+                        "store",
+                        "order",
+                        ":orderId"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "{{orderId}}",
+                          "key": "orderId",
+                          "description": "(Required) ID of pet that needs to be fetched"
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "GET",
+                    "auth": null
+                  },
+                  "response": [
+                    {
+                      "id": "9449c96c-8e74-4f5e-b2b1-fa985bf83e8b",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "store",
+                            "order",
+                            ":orderId"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": [
+                            {
+                              "disabled": false,
+                              "type": "any",
+                              "value": "{{orderId}}",
+                              "key": "orderId",
+                              "description": "(Required) ID of pet that needs to be fetched"
+                            }
+                          ]
+                        },
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "method": "GET",
+                        "body": {}
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n  \"id\": \"<long>\",\n  \"petId\": \"<long>\",\n  \"quantity\": \"<integer>\",\n  \"shipDate\": \"<dateTime>\",\n  \"status\": \"<string>\",\n  \"complete\": \"<boolean>\"\n}",
+                      "cookie": [],
+                      "_postman_previewlanguage": "json"
+                    },
+                    {
+                      "id": "9b72ee8a-78da-42fe-b9ed-ef3228a53020",
+                      "name": "Invalid ID supplied",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "store",
+                            "order",
+                            ":orderId"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": [
+                            {
+                              "disabled": false,
+                              "type": "any",
+                              "value": "{{orderId}}",
+                              "key": "orderId",
+                              "description": "(Required) ID of pet that needs to be fetched"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "body": {}
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "body": "",
+                      "cookie": [],
+                      "_postman_previewlanguage": "text"
+                    },
+                    {
+                      "id": "f8f43229-cecb-433e-91bd-53a4e228e272",
+                      "name": "Order not found",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "store",
+                            "order",
+                            ":orderId"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": [
+                            {
+                              "disabled": false,
+                              "type": "any",
+                              "value": "{{orderId}}",
+                              "key": "orderId",
+                              "description": "(Required) ID of pet that needs to be fetched"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "body": {}
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "body": "",
+                      "cookie": [],
+                      "_postman_previewlanguage": "text"
+                    }
+                  ],
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "exec": [
+                          "// ------------existing_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n});\n\n// ------------import_details------------\n\nconst { apiTestClient } = require('./testUtils');\nconst { expect } = require('chai');\n\n// ------------source_code------------\n\nasync function handleEndpointC(request, response) {\n  const { query } = request;\n  const processedData = await processQuery(query); // New method for query processing\n  response.status(200).send({ result: processedData, success: true });\n}\n\nasync function processQuery(query) {\n  // Logic for processing queries based on new business requirements\n  return { query, processedData: query.toUpperCase() };\n}\n\n// ------------updated_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n\n  // Newly added test case for updated source code\n  it('should correctly process query for endpoint C', async () => {\n    const queryParams = { q: 'testQuery' };\n    const response = await apiTestClient.get('/api/v1/endpointC', { params: queryParams });\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('result');\n    expect(response.data.result).toHaveProperty('query', 'testQuery');\n    expect(response.data.result).toHaveProperty('processedData', 'TESTQUERY');\n    expect(response.data).toHaveProperty('success', true);\n  });\n});\n"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  }
+                },
+                {
+                  "id": "49d4bcba-d73f-4821-802c-b9671a94c885",
+                  "name": "Delete purchase order by ID",
+                  "request": {
+                    "name": "Delete purchase order by ID",
+                    "description": {
+                      "content": "For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors",
+                      "type": "text/plain"
+                    },
+                    "url": {
+                      "path": [
+                        "store",
+                        "order",
+                        ":orderId"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "{{orderId}}",
+                          "key": "orderId",
+                          "description": "(Required) ID of the order that needs to be deleted"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "auth": null
+                  },
+                  "response": [
+                    {
+                      "id": "9fad7031-0354-4941-b384-152548c7e44e",
+                      "name": "Invalid ID supplied",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "store",
+                            "order",
+                            ":orderId"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": [
+                            {
+                              "disabled": false,
+                              "type": "any",
+                              "value": "{{orderId}}",
+                              "key": "orderId",
+                              "description": "(Required) ID of the order that needs to be deleted"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "body": {}
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "body": "",
+                      "cookie": [],
+                      "_postman_previewlanguage": "text"
+                    },
+                    {
+                      "id": "369b3f86-b242-45b7-a780-a2b02ec8eb50",
+                      "name": "Order not found",
+                      "originalRequest": {
+                        "url": {
+                          "path": [
+                            "store",
+                            "order",
+                            ":orderId"
+                          ],
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "query": [],
+                          "variable": [
+                            {
+                              "disabled": false,
+                              "type": "any",
+                              "value": "{{orderId}}",
+                              "key": "orderId",
+                              "description": "(Required) ID of the order that needs to be deleted"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "body": {}
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "body": "",
+                      "cookie": [],
+                      "_postman_previewlanguage": "text"
+                    }
+                  ],
+                  "event": [
+                    {
+                      "listen": "test",
+                      "script": {
+                        "exec": [
+                          "// ------------existing_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n});\n\n// ------------import_details------------\n\nconst { apiTestClient } = require('./testUtils');\nconst { expect } = require('chai');\n\n// ------------source_code------------\n\nasync function handleEndpointC(request, response) {\n  const { query } = request;\n  const processedData = await processQuery(query); // New method for query processing\n  response.status(200).send({ result: processedData, success: true });\n}\n\nasync function processQuery(query) {\n  // Logic for processing queries based on new business requirements\n  return { query, processedData: query.toUpperCase() };\n}\n\n// ------------updated_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n\n  // Newly added test case for updated source code\n  it('should correctly process query for endpoint C', async () => {\n    const queryParams = { q: 'testQuery' };\n    const response = await apiTestClient.get('/api/v1/endpointC', { params: queryParams });\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('result');\n    expect(response.data.result).toHaveProperty('query', 'testQuery');\n    expect(response.data.result).toHaveProperty('processedData', 'TESTQUERY');\n    expect(response.data).toHaveProperty('success', true);\n  });\n});\n"
+                        ],
+                        "type": "text/javascript"
+                      }
+                    }
+                  ],
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  }
+                }
+              ],
+              "event": []
+            }
+          ],
+          "event": []
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "3c8dcd15-8075-4190-9f14-c986dc4efe15",
+      "name": "user",
+      "item": [
+        {
+          "id": "ddcd036f-0e08-4fc3-96bc-6a1ee0c427ad",
+          "name": "Create user",
+          "request": {
+            "name": "Create user",
+            "description": {
+              "content": "This can only be done by the logged in user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": \"{{id}}\",\n    \"username\": \"{{username}}\",\n    \"firstName\": \"{{firstName}}\",\n    \"lastName\": \"{{lastName}}\",\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\",\n    \"phone\": \"{{phone}}\",\n    \"userStatus\": \"{{userStatus}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5d71b5cd-be0d-4bd7-b81f-0cb59d75815c",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"id\": \"{{id}}\",\n    \"username\": \"{{username}}\",\n    \"firstName\": \"{{firstName}}\",\n    \"lastName\": \"{{lastName}}\",\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\",\n    \"phone\": \"{{phone}}\",\n    \"userStatus\": \"{{userStatus}}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// ------------existing_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n});\n\n// ------------import_details------------\n\nconst { apiTestClient } = require('./testUtils');\nconst { expect } = require('chai');\n\n// ------------source_code------------\n\nasync function handleEndpointC(request, response) {\n  const { query } = request;\n  const processedData = await processQuery(query); // New method for query processing\n  response.status(200).send({ result: processedData, success: true });\n}\n\nasync function processQuery(query) {\n  // Logic for processing queries based on new business requirements\n  return { query, processedData: query.toUpperCase() };\n}\n\n// ------------updated_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n\n  // Newly added test case for updated source code\n  it('should correctly process query for endpoint C', async () => {\n    const queryParams = { q: 'testQuery' };\n    const response = await apiTestClient.get('/api/v1/endpointC', { params: queryParams });\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('result');\n    expect(response.data.result).toHaveProperty('query', 'testQuery');\n    expect(response.data.result).toHaveProperty('processedData', 'TESTQUERY');\n    expect(response.data).toHaveProperty('success', true);\n  });\n});\n"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c2a53b0a-392c-472c-a15c-519ccb79b25b",
+          "name": "Creates list of users with given input array",
+          "request": {
+            "name": "Creates list of users with given input array",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "createWithList"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n    {\n        \"id\": \"{{id}}\",\n        \"username\": \"{{username}}\",\n        \"firstName\": \"{{firstName}}\",\n        \"lastName\": \"{{lastName}}\",\n        \"email\": \"{{email}}\",\n        \"password\": \"{{password}}\",\n        \"phone\": \"{{phone}}\",\n        \"userStatus\": \"{{userStatus}}\"\n    },\n    {\n        \"id\": \"{{1.id}}\",\n        \"username\": \"{{1.username}}\",\n        \"firstName\": \"{{1.firstName}}\",\n        \"lastName\": \"{{1.lastName}}\",\n        \"email\": \"{{1.email}}\",\n        \"password\": \"{{1.password}}\",\n        \"phone\": \"{{1.phone}}\",\n        \"userStatus\": \"{{1.userStatus}}\"\n    }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7d7be6ae-941b-44b7-9253-8b22741c8f8b",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "createWithList"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// ------------existing_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n});\n\n// ------------import_details------------\n\nconst { apiTestClient } = require('./testUtils');\nconst { expect } = require('chai');\n\n// ------------source_code------------\n\nasync function handleEndpointC(request, response) {\n  const { query } = request;\n  const processedData = await processQuery(query); // New method for query processing\n  response.status(200).send({ result: processedData, success: true });\n}\n\nasync function processQuery(query) {\n  // Logic for processing queries based on new business requirements\n  return { query, processedData: query.toUpperCase() };\n}\n\n// ------------updated_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n\n  // Newly added test case for updated source code\n  it('should correctly process query for endpoint C', async () => {\n    const queryParams = { q: 'testQuery' };\n    const response = await apiTestClient.get('/api/v1/endpointC', { params: queryParams });\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('result');\n    expect(response.data.result).toHaveProperty('query', 'testQuery');\n    expect(response.data.result).toHaveProperty('processedData', 'TESTQUERY');\n    expect(response.data).toHaveProperty('success', true);\n  });\n});\n"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3ea1b349-ab87-467c-afea-8340a7e49700",
+          "name": "{username}",
+          "item": [
+            {
+              "id": "d206023a-1422-40a4-8baf-d4c3de37ca7c",
+              "name": "Get user by user name",
+              "request": {
+                "name": "Get user by user name",
+                "description": {
+                  "content": "",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "user",
+                    ":username"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "{{username}}",
+                      "key": "username",
+                      "description": "(Required) The name that needs to be fetched. Use user1 for testing. "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "auth": null
+              },
+              "response": [
+                {
+                  "id": "0bf8b171-083c-4f04-b354-023ae4c126fb",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "user",
+                        ":username"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "{{username}}",
+                          "key": "username",
+                          "description": "(Required) The name that needs to be fetched. Use user1 for testing. "
+                        }
+                      ]
+                    },
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"id\": \"<long>\",\n  \"username\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"password\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"userStatus\": \"<integer>\"\n}",
+                  "cookie": [],
+                  "_postman_previewlanguage": "json"
+                },
+                {
+                  "id": "d9e06be6-6690-4757-956d-954e188bd1c4",
+                  "name": "Invalid username supplied",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "user",
+                        ":username"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "{{username}}",
+                          "key": "username",
+                          "description": "(Required) The name that needs to be fetched. Use user1 for testing. "
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "body": "",
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                },
+                {
+                  "id": "67f36afe-aca1-489c-9b93-971a6eaab2f3",
+                  "name": "User not found",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "user",
+                        ":username"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "{{username}}",
+                          "key": "username",
+                          "description": "(Required) The name that needs to be fetched. Use user1 for testing. "
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "body": "",
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "// ------------existing_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n});\n\n// ------------import_details------------\n\nconst { apiTestClient } = require('./testUtils');\nconst { expect } = require('chai');\n\n// ------------source_code------------\n\nasync function handleEndpointC(request, response) {\n  const { query } = request;\n  const processedData = await processQuery(query); // New method for query processing\n  response.status(200).send({ result: processedData, success: true });\n}\n\nasync function processQuery(query) {\n  // Logic for processing queries based on new business requirements\n  return { query, processedData: query.toUpperCase() };\n}\n\n// ------------updated_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n\n  // Newly added test case for updated source code\n  it('should correctly process query for endpoint C', async () => {\n    const queryParams = { q: 'testQuery' };\n    const response = await apiTestClient.get('/api/v1/endpointC', { params: queryParams });\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('result');\n    expect(response.data.result).toHaveProperty('query', 'testQuery');\n    expect(response.data.result).toHaveProperty('processedData', 'TESTQUERY');\n    expect(response.data).toHaveProperty('success', true);\n  });\n});\n"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            },
+            {
+              "id": "d80e6ae3-e6ea-4eaa-a03c-4470897efe05",
+              "name": "Updated user",
+              "request": {
+                "name": "Updated user",
+                "description": {
+                  "content": "This can only be done by the logged in user.",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "user",
+                    ":username"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "{{username}}",
+                      "key": "username",
+                      "description": "(Required) name that need to be updated"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "auth": null,
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"id\": \"{{id}}\",\n    \"username\": \"{{username}}\",\n    \"firstName\": \"{{firstName}}\",\n    \"lastName\": \"{{lastName}}\",\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\",\n    \"phone\": \"{{phone}}\",\n    \"userStatus\": \"{{userStatus}}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [
+                {
+                  "id": "522ac33b-dc15-492f-9e70-cc003d995299",
+                  "name": "Invalid user supplied",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "user",
+                        ":username"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "{{username}}",
+                          "key": "username",
+                          "description": "(Required) name that need to be updated"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"id\": \"{{id}}\",\n    \"username\": \"{{username}}\",\n    \"firstName\": \"{{firstName}}\",\n    \"lastName\": \"{{lastName}}\",\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\",\n    \"phone\": \"{{phone}}\",\n    \"userStatus\": \"{{userStatus}}\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "body": "",
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                },
+                {
+                  "id": "4e1db753-0f85-45e7-abd2-e092b7349a25",
+                  "name": "User not found",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "user",
+                        ":username"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "{{username}}",
+                          "key": "username",
+                          "description": "(Required) name that need to be updated"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"id\": \"{{id}}\",\n    \"username\": \"{{username}}\",\n    \"firstName\": \"{{firstName}}\",\n    \"lastName\": \"{{lastName}}\",\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\",\n    \"phone\": \"{{phone}}\",\n    \"userStatus\": \"{{userStatus}}\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "body": "",
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "// ------------existing_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n});\n\n// ------------import_details------------\n\nconst { apiTestClient } = require('./testUtils');\nconst { expect } = require('chai');\n\n// ------------source_code------------\n\nasync function handleEndpointC(request, response) {\n  const { query } = request;\n  const processedData = await processQuery(query); // New method for query processing\n  response.status(200).send({ result: processedData, success: true });\n}\n\nasync function processQuery(query) {\n  // Logic for processing queries based on new business requirements\n  return { query, processedData: query.toUpperCase() };\n}\n\n// ------------updated_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n\n  // Newly added test case for updated source code\n  it('should correctly process query for endpoint C', async () => {\n    const queryParams = { q: 'testQuery' };\n    const response = await apiTestClient.get('/api/v1/endpointC', { params: queryParams });\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('result');\n    expect(response.data.result).toHaveProperty('query', 'testQuery');\n    expect(response.data.result).toHaveProperty('processedData', 'TESTQUERY');\n    expect(response.data).toHaveProperty('success', true);\n  });\n});\n"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            },
+            {
+              "id": "f741c327-b6e9-4d58-bfcb-b698339833ed",
+              "name": "Delete user",
+              "request": {
+                "name": "Delete user",
+                "description": {
+                  "content": "This can only be done by the logged in user.",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "user",
+                    ":username"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "{{username}}",
+                      "key": "username",
+                      "description": "(Required) The name that needs to be deleted"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "auth": null
+              },
+              "response": [
+                {
+                  "id": "f37d77de-93d7-4005-85fe-0774f250eab2",
+                  "name": "Invalid username supplied",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "user",
+                        ":username"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "{{username}}",
+                          "key": "username",
+                          "description": "(Required) The name that needs to be deleted"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "body": {}
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "body": "",
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                },
+                {
+                  "id": "bf95e81b-9961-4322-ac53-89ddac5e317c",
+                  "name": "User not found",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "user",
+                        ":username"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "disabled": false,
+                          "type": "any",
+                          "value": "{{username}}",
+                          "key": "username",
+                          "description": "(Required) The name that needs to be deleted"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "body": {}
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "text/plain"
+                    }
+                  ],
+                  "body": "",
+                  "cookie": [],
+                  "_postman_previewlanguage": "text"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "// ------------existing_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n});\n\n// ------------import_details------------\n\nconst { apiTestClient } = require('./testUtils');\nconst { expect } = require('chai');\n\n// ------------source_code------------\n\nasync function handleEndpointC(request, response) {\n  const { query } = request;\n  const processedData = await processQuery(query); // New method for query processing\n  response.status(200).send({ result: processedData, success: true });\n}\n\nasync function processQuery(query) {\n  // Logic for processing queries based on new business requirements\n  return { query, processedData: query.toUpperCase() };\n}\n\n// ------------updated_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n\n  // Newly added test case for updated source code\n  it('should correctly process query for endpoint C', async () => {\n    const queryParams = { q: 'testQuery' };\n    const response = await apiTestClient.get('/api/v1/endpointC', { params: queryParams });\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('result');\n    expect(response.data.result).toHaveProperty('query', 'testQuery');\n    expect(response.data.result).toHaveProperty('processedData', 'TESTQUERY');\n    expect(response.data).toHaveProperty('success', true);\n  });\n});\n"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              }
+            }
+          ],
+          "event": []
+        },
+        {
+          "id": "838a2428-590c-4dbf-a075-fa3cdb632176",
+          "name": "Logs user into the system",
+          "request": {
+            "name": "Logs user into the system",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "username",
+                  "value": "{{username}}",
+                  "description": "(Required) The user name for login"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "{{password}}",
+                  "description": "(Required) The password for login in clear text"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "444cef25-8110-4d8b-94b8-c1850063b0a6",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "username",
+                      "value": "{{username}}"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{password}}"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "date in UTC when token expires",
+                  "key": "X-Expires-After",
+                  "value": "{{X-Expires-After}}"
+                },
+                {
+                  "disabled": false,
+                  "description": "calls per hour allowed by the user",
+                  "key": "X-Rate-Limit",
+                  "value": "{{X-Rate-Limit}}"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"enim dolor deserunt Lorem\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57e7104a-00f5-4a7c-b427-a68a31d2f204",
+              "name": "Invalid username/password supplied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "username",
+                      "value": "{{username}}"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{password}}"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// ------------existing_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n});\n\n// ------------import_details------------\n\nconst { apiTestClient } = require('./testUtils');\nconst { expect } = require('chai');\n\n// ------------source_code------------\n\nasync function handleEndpointC(request, response) {\n  const { query } = request;\n  const processedData = await processQuery(query); // New method for query processing\n  response.status(200).send({ result: processedData, success: true });\n}\n\nasync function processQuery(query) {\n  // Logic for processing queries based on new business requirements\n  return { query, processedData: query.toUpperCase() };\n}\n\n// ------------updated_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n\n  // Newly added test case for updated source code\n  it('should correctly process query for endpoint C', async () => {\n    const queryParams = { q: 'testQuery' };\n    const response = await apiTestClient.get('/api/v1/endpointC', { params: queryParams });\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('result');\n    expect(response.data.result).toHaveProperty('query', 'testQuery');\n    expect(response.data.result).toHaveProperty('processedData', 'TESTQUERY');\n    expect(response.data).toHaveProperty('success', true);\n  });\n});\n"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ff93134-3f11-4fe5-8581-fd0d26f23357",
+          "name": "Logs out current logged in user session",
+          "request": {
+            "name": "Logs out current logged in user session",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "logout"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "90940226-3612-4b22-bacd-ca292a03f881",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "logout"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// ------------existing_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n});\n\n// ------------import_details------------\n\nconst { apiTestClient } = require('./testUtils');\nconst { expect } = require('chai');\n\n// ------------source_code------------\n\nasync function handleEndpointC(request, response) {\n  const { query } = request;\n  const processedData = await processQuery(query); // New method for query processing\n  response.status(200).send({ result: processedData, success: true });\n}\n\nasync function processQuery(query) {\n  // Logic for processing queries based on new business requirements\n  return { query, processedData: query.toUpperCase() };\n}\n\n// ------------updated_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n\n  // Newly added test case for updated source code\n  it('should correctly process query for endpoint C', async () => {\n    const queryParams = { q: 'testQuery' };\n    const response = await apiTestClient.get('/api/v1/endpointC', { params: queryParams });\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('result');\n    expect(response.data.result).toHaveProperty('query', 'testQuery');\n    expect(response.data.result).toHaveProperty('processedData', 'TESTQUERY');\n    expect(response.data).toHaveProperty('success', true);\n  });\n});\n"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1fdd8b3-935e-4b98-a807-6d7d76ff4143",
+          "name": "Creates list of users with given input array",
+          "request": {
+            "name": "Creates list of users with given input array",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "createWithArray"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n    {\n        \"id\": \"{{id}}\",\n        \"username\": \"{{username}}\",\n        \"firstName\": \"{{firstName}}\",\n        \"lastName\": \"{{lastName}}\",\n        \"email\": \"{{email}}\",\n        \"password\": \"{{password}}\",\n        \"phone\": \"{{phone}}\",\n        \"userStatus\": \"{{userStatus}}\"\n    },\n    {\n        \"id\": \"{{1.id}}\",\n        \"username\": \"{{1.username}}\",\n        \"firstName\": \"{{1.firstName}}\",\n        \"lastName\": \"{{1.lastName}}\",\n        \"email\": \"{{1.email}}\",\n        \"password\": \"{{1.password}}\",\n        \"phone\": \"{{1.phone}}\",\n        \"userStatus\": \"{{1.userStatus}}\"\n    }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4f8ee16a-4550-4803-8fc4-5363f414e9c7",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "createWithArray"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "// ------------existing_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n});\n\n// ------------import_details------------\n\nconst { apiTestClient } = require('./testUtils');\nconst { expect } = require('chai');\n\n// ------------source_code------------\n\nasync function handleEndpointC(request, response) {\n  const { query } = request;\n  const processedData = await processQuery(query); // New method for query processing\n  response.status(200).send({ result: processedData, success: true });\n}\n\nasync function processQuery(query) {\n  // Logic for processing queries based on new business requirements\n  return { query, processedData: query.toUpperCase() };\n}\n\n// ------------updated_test_case------------\n\ndescribe('Artillery Load Test', () => {\n  it('should return success response for endpoint A', async () => {\n    const response = await apiTestClient.get('/api/v1/endpointA');\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('success', true);\n  });\n\n  it('should handle large payloads for endpoint B', async () => {\n    const largePayload = { data: 'x'.repeat(10000) }; // Simulating large payload\n    const response = await apiTestClient.post('/api/v1/endpointB', largePayload);\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('processed', true);\n  });\n\n  // Newly added test case for updated source code\n  it('should correctly process query for endpoint C', async () => {\n    const queryParams = { q: 'testQuery' };\n    const response = await apiTestClient.get('/api/v1/endpointC', { params: queryParams });\n    expect(response.status).toBe(200);\n    expect(response.data).toHaveProperty('result');\n    expect(response.data.result).toHaveProperty('query', 'testQuery');\n    expect(response.data.result).toHaveProperty('processedData', 'TESTQUERY');\n    expect(response.data).toHaveProperty('success', true);\n  });\n});\n"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://petstore.swagger.io/v2",
+      "key": "baseUrl"
+    },
+    {
+      "type": "integer",
+      "value": 200,
+      "key": "statusCode"
+    }
+  ],
+  "info": {
+    "_postman_id": "b8a969c8-6664-4745-9765-1f5ea0c0bb7f",
+    "name": "Swagger Petstore",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.\n\nContact Support:\n Email: apiteam@swagger.io",
+      "type": "text/plain"
+    }
+  }
+}

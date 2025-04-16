@@ -1,0 +1,7 @@
+username,statusCode,scenario
+"valid_user_1",200,successful operation
+"valid_user_2",200,successful operation
+"invalid_user#1",400,Invalid username supplied
+"invalid_user#2",400,Invalid username supplied
+"missing_user_1",404,User not found
+"missing_user_2",404,User not found

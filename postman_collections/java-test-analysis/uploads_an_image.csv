@@ -1,0 +1,6 @@
+petId,additionalMetadata,statusCode,scenario
+12345,"Valid Input Metadata",200,"successful operation"
+67890,"Another Valid Metadata with escaped /\"quotes/\"",200,"successful operation"
+11111,"Sample Metadata",200,"successful operation"
+32686281,"Additional helpers combined",200,"successful operation"
+55432,"Test escaping /\"quotes in values / endtest",200,"successful operation"
