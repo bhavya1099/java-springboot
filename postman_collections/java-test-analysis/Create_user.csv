@@ -1,0 +1,6 @@
+id,username,firstName,lastName,email,password,phone,userStatus,statusCode,scenario  
+101,"john_doe","John","Doe","john.doe@example.com","password123","1234567890",1,500,"successful operation"  
+102,"jane_smith","Jane","Smith","jane.smith@example.com","password456","9876543210",0,500,"successful operation"  
+103,"alice_123","Alice","Johnson","alice.johnson@example.com","alice_pass","3456789012",1,500,"successful operation"  
+104,"bob_the_builder","Bob","Builder","bob.builder@example.com","bobbuilder1","4567890123",0,500,"successful operation"  
+105,"charlie_abc","Charlie","Brown","charlie.brown@example.com","charlie123","5678901234",1,500,"successful operation"

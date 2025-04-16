@@ -1,0 +1,7 @@
+name,photoUrls,id,category.id,category.name,tags,status,statusCode,scenario  
+"doggie",["image1.jpg", "image2.png"],12345,1,"Dogs",["tag1", "tag2"],"available",400,"Invalid ID supplied"  
+"invalidName123",["invalidUrl"],-1,-1,"InvalidCategory",["InvalidTag"],"unknownStatus",404,"Pet not found"  
+"doggie",["image1.jpg", "image2.png"],12346,2,"Cats",["tagA", "tagB"],"pending",405,"Validation exception"  
+"animalEscape\"quote\"",["photo\"quote\"escape.jpg"],-999,0,"EscapedCategory",["escapedTag\"quote\""],"error",400,"Invalid ID supplied"  
+"doggie",["image1.jpg", "image2.png"],12347,3,"Birds",["tagX", "tagY"],"sold",404,"Pet not found"  
+"escaped\"quote\"data",["randomPhoto.jpg"],0,-999,"UnknownCategory",["unknownTag"],"unknown",405,"Validation exception"  

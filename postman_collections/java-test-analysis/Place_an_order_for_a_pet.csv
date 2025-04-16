@@ -1,0 +1,7 @@
+id,petId,quantity,shipDate,status,complete,statusCode,scenario  
+12345,67890,3,"2023-10-01T15:30:00Z","available",true,200,"successful operation"  
+67890,12345,1,"2023-10-02T10:15:00Z","pending",false,200,"successful operation"  
+23456,78901,5,"2023-10-03T09:45:00Z","sold",true,200,"successful operation"  
+"invalid_id","wrong_petId","NaN","invalid_date","unknown","null",400,"Invalid Order"  
+-1,-99999,0,"2023--invalid-date","error",false,400,"Invalid Order"  
+"not_an_integer","mismatch_value","wrong_quantity","broken_timestamp","fail_status",true,400,"Invalid Order"

@@ -1,0 +1,11 @@
+petId,statusCode,scenario
+1,200,"successful operation"
+2,200,"successful operation"
+3,400,"Invalid ID supplied"
+4,404,"Pet not found"
+5,200,"successful operation"
+-1,400,"Invalid ID supplied"
+1001,404,"Pet not found"
+6,200,"successful operation"
+xyz,400,"Invalid ID supplied"
+9999,404,"Pet not found"

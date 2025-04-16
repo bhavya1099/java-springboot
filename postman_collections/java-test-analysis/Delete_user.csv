@@ -1,0 +1,5 @@
+username,statusCode,scenario
+"Invalid_123",400,"Invalid username supplied"
+"User!/ABC",400,"Invalid username supplied"
+"NonExistentUser",404,"User not found"
+"UnknownUser",404,"User not found"

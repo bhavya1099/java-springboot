@@ -1,0 +1,6 @@
+id,username,firstName,lastName,email,password,phone,userStatus,1.id,1.username,1.firstName,1.lastName,1.email,1.password,1.phone,1.userStatus,statusCode,scenario
+1,"user_1","John","Doe","john.doe@example.com","password1","1234567890",0,101,"api_user_101","Jane","Smith","jane.smith@example.com","password_101","9876543210",1,500,"successful operation"
+2,"user_2","Alice","Wonderland","alice.wonderland@example.com","password2","2345678901",1,102,"api_user_102","Bob","Builder","bob.builder@example.com","password_102","8765432109",0,500,"successful operation"
+3,"user_3","Charlie","Brown","charlie.brown@example.com","password3","3456789012",0,103,"api_user_103","Harry","Potter","harry.potter@example.com","password_103","7654321098",1,500,"successful operation"
+4,"user_4","Lucy","Pevensie","lucy.pevensie@example.com","password4","4567890123",1,104,"api_user_104","Peter","Pan","peter.pan@example.com","password_104","6543210987",0,500,"successful operation"
+5,"user_5","Edward","Snowden","edward.snowden@example.com","password5","5678901234",0,105,"api_user_105","Tony","Stark","tony.stark@example.com","password_105","5432109876",1,500,"successful operation"

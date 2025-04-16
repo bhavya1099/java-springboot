@@ -1,0 +1,4 @@
+name,photoUrls,id,category.id,category.name,tags,status,statusCode,scenario  
+"invalid_name","invalid_url","not_an_integer","not_an_integer","!@#$%","invalid_tag","invalid_status",405,"Invalid input"  
+"invalid_pet_name","invalid_photo","123abc","123abc","123!@#","invalid_tag_value","not_available",405,"Invalid input"  
+"/missing /slashes","wrong_url_format","-999","-999","category?, @$ "," value"

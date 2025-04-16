@@ -1,0 +1,9 @@
+tags,statusCode,scenario
+["tag1","tag2"],200,"successful operation"
+["tag3","tag4"],200,"successful operation"
+["invalid_tag",1] ,400,"Invalid tag value"
+[123,true] ,400,"Invalid tag value"
+["example_tag","123"],200,"successful operation"
+[[foo],bar],400,"Invalid tag value"
+[true,false],400,"Invalid tag value"
+["quoted_tag"],200,"successful operation"

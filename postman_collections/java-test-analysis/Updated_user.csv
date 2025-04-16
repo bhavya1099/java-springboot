@@ -1,0 +1,5 @@
+username,id,firstName,lastName,email,password,phone,userStatus,statusCode,scenario
+"invalid_user_1",-1,"Invalid","User","invalid_email","","0000000000",-999,400,"Invalid user supplied"
+"invalid_user_2",-2,"N/A","Anonymous","not_an_email","pass","phone_not_numeric",2147483648,400,"Invalid user supplied"
+"missing_user",0,"","","null_value@","null_pass","",-50000,404,"User not found"
+"user_not_exist","-123","User","Unknown","user@@notfound.com","password123","999999999999",-2147483649,404,"User not found"
