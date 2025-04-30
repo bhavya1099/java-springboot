@@ -1,0 +1,3 @@
+METHOD^|^URL^|^REQ_HEADERS^|^REQ_BODY^|^RESPONSE_CODE^|^RESPONSE_BODY
+post^|^https://petstore.swagger.io/v2/user/createWithArray^|^OAuth2^|^[{'username': 'bulkuser1', 'email': 'bulk1@test.com', 'firstName': 'Bulk', 'lastName': 'User1'}, {'username': 'bulkuser2', 'email': 'bulk2@test.com', 'firstName': 'Bulk', 'lastName': 'User2'}]^|^default^|^successful operation
+post^|^https://petstore.swagger.io/v2/pet^|^OAuth2^|^[{'name':'Max', 'category':'Dog', 'status':'available'},{'name':'Charlie', 'category':'Dog', 'status':'available'}]^|^405^|^Invalid input

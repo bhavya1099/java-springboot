@@ -1,0 +1,14 @@
+METHOD^|^URL^|^REQ_HEADERS^|^REQ_BODY^|^RESPONSE_CODE^|^RESPONSE_BODY
+POST^|^https://petstore.swagger.io/v2/user^|^{}^|^{"id":1,"username":"testuser1","firstName":"Test","lastName":"User","email":"test@email.com","password":"pass123","phone":"1234567890","userStatus":0}^|^200^|^{Response: User Created}
+GET^|^https://petstore.swagger.io/v2/user/login?username=testuser1&password=pass123^|^{}^|^{}^|^200^|^{Response: User Logged In}
+POST^|^https://petstore.swagger.io/v2/pet^|^{"oauth2":"write:pets"}^|^{"id":100,"name":"Fluffy","photoUrls":[],"tags":[{"id":1,"name":"friendly"}],"status":"available"}^|^200^|^{Response: Pet created}
+GET^|^https://petstore.swagger.io/v2/pet/100^|^{"apiKey": "api_key"}^|^{}^|^200^|^{Response: Pet Retrieved}
+POST^|^https://petstore.swagger.io/v2/pet/100/uploadImage^|^{"oauth2":"write:pets"}^|^{"additionalMetadata":"A beautiful cat","file":{}}^|^200^|^{Response: Image Uploaded}
+PUT^|^https://petstore.swagger.io/v2/pet^|^{"oauth2":"write:pets"}^|^{"id":100,"name":"Fluffy","photoUrls":[],"tags":[{"id":1,"name":"friendly"}],"status":"pending"}^|^200^|^{Response: Pet Updated}
+GET^|^https://petstore.swagger.io/v2/pet/findByStatus^|^{"oauth2":"write:pets"}^|^{"status":["pending"]}^|^200^|^{Response: Pet Retrieved by Status}
+POST^|^https://petstore.swagger.io/v2/store/order^|^{}^|^{"id":102,"petId":100,"quantity":1,"shipDate":"21-11-2021","status":"placed","complete":false}^|^200^|^{Response: Order Created}
+GET^|^https://petstore.swagger.io/v2/store/order/102^|^{}^|^{}^|^200^|^{Response: Order Retrieved}
+DELETE^|^https://petstore.swagger.io/v2/store/order/102^|^{}^|^{}^|^200^|^{Response: Order Deleted}
+DELETE^|^https://petstore.swagger.io/v2/pet/100^|^{"oauth2":"write:pets"}^|^{}^|^200^|^{Response: Pet Deleted}
+DELETE^|^https://petstore.swagger.io/v2/user/testuser1^|^{}^|^{}^|^200^|^{Response: User Deleted}
+GET^|^https://petstore.swagger.io/v2/user/logout^|^{}^|^{}^|^200^|^{Response: User Logged Out}
