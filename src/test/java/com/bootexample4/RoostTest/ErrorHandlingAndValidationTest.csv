@@ -1,0 +1,7 @@
+METHOD^|^URL^|^REQ_HEADERS^|^REQ_BODY^|^RESPONSE_CODE^|^RESPONSE_BODY
+post^|^/v2/pet^|^ {"type": "oauth2","scopes":["write:pets","read:pets"]} ^|^ {"id": "", "name": "", "photoUrls":[""], "tags":[{"id":"","name":""}],"status":""} ^|^405^|^ {"description": "Invalid input","headers": "No response headers"}
+get^|^/v2/pet/{petId}^|^ {"type": "apiKey","name": "api_key","in": "header","scopes": []} ^|^ {} ^|^404^|^ {"description": "Pet not found","headers": "No response headers"}
+get^|^/v2/store/order/{orderId}^|^ {} ^|^ {} ^|^400^|^ {"description": "Invalid ID supplied","headers": "No response headers"}
+get^|^/v2/store/order/{orderId}^|^ {} ^|^ {} ^|^400^|^ {"description": "Invalid ID supplied","headers": "No response headers"}
+post^|^/v2/user^|^ {} ^|^ {"id": "", "username": "", "firstName": "", "lastName": "", "email": "", "password": "", "phone": "", "userStatus": ""} ^|^ {} ^|^ {"description": "successful operation","headers": "No response headers"}
+get^|^/v2/user/{username}^|^ {} ^|^ {} ^|^400^|^ {"description": "Invalid username supplied","headers": "No response headers"}
