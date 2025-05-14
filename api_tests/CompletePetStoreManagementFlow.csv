@@ -1,0 +1,11 @@
+username^|^email^|^firstName^|^lastName^|^password^|^phone^|^petId^|^orderId^|^statusCode^|^scenario
+user1^|^user1@test.com^|^John^|^Doe^|^Abc123^|^1234567890^|^1^|^100^|^200^|^scenario1
+user2^|^user2@test.com^|^Jane^|^Smith^|^Def456^|^7890123456^|^2^|^101^|^200^|^scenario2
+user3^|^user3@test.com^|^Bob^|^Adams^|^Ghi789^|^0123456789^|^3^|^102^|^200^|^scenario3
+user4^|^user4@test.com^|^Alice^|^Johnson^|^Jkl012^|^6789012345^|^4^|^103^|^200^|^scenario4
+user5^|^user5@test.com^|^Charlie^|^Brown^|^Mno345^|^2345678901^|^5^|^104^|^200^|^scenario5
+user6^|^user6@test.com^|^Eve^|^Williams^|^Pqr678^|^8901234567^|^6^|^105^|^200^|^scenario6
+user7^|^user7@test.com^|^Frank^|^Taylor^|^Stu901^|^5678901234^|^7^|^106^|^200^|^scenario7
+user8^|^user8@test.com^|^Grace^|^Anderson^|^Vwx234^|^9012345678^|^8^|^107^|^200^|^scenario8
+user9^|^user9@test.com^|^Harry^|^Thomas^|^Yza567^|^4567890123^|^9^|^108^|^200^|^scenario9
+user10^|^user10@test.com^|^Irene^|^Harris^|^Bcd890^|^7890123456^|^10^|^109^|^200^|^scenario10
