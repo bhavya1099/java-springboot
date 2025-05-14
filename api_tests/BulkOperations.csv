@@ -1,0 +1,11 @@
+username^|^email^|^firstName^|^lastName^|^name^|^category^|^status^|^statusCode^|^scenario
+user1^|^user1@email.com^|^John^|^Doe^|^John Doe^|^Admin^|^Active^|^200^|^Scenario1
+user2^|^user2@email.com^|^Jane^|^Doe^|^Jane Doe^|^User^|^Inactive^|^404^|^Scenario2
+user3^|^user3@email.com^|^Tom^|^Smith^|^Tom Smith^|^Admin^|^Active^|^200^|^Scenario3
+user4^|^user4@email.com^|^Emma^|^Brown^|^Emma Brown^|^User^|^Inactive^|^404^|^Scenario4
+user5^|^user5@email.com^|^Harry^|^Taylor^|^Harry Taylor^|^Admin^|^Active^|^200^|^Scenario5
+user6^|^user6@email.com^|^Olivia^|^Wilson^|^Olivia Wilson^|^User^|^Active^|^200^|^Scenario6
+user7^|^user7@email.com^|^William^|^Johnson^|^William Johnson^|^Admin^|^Inactive^|^404^|^Scenario7
+user8^|^user8@email.com^|^Mia^|^Jones^|^Mia Jones^|^User^|^Active^|^200^|^Scenario8
+user9^|^user9@email.com^|^Noah^|^Miller^|^Noah Miller^|^Admin^|^Active^|^200^|^Scenario9
+user10^|^user10@email.com^|^Sophia^|^Davis^|^Sophia Davis^|^User^|^Inactive^|^404^|^Scenario10

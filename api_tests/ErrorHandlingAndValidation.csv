@@ -1,0 +1,11 @@
+petId^|^status^|^tags^|^id^|^category^|^name^|^username^|^firstName^|^lastName^|^email^|^password^|^phone^|^userStatus^|^orderId^|^statusCode^|^scenario
+1001^|^Active^|^small,dog^|^1^|^animal^|^dal^|^user1^|^John^|^Doe^|^john@example.com^|^12345^|^+1123456789^|^1^|^101^|^200^|^scenario1
+1002^|^Active^|^medium,dog^|^2^|^animal^|^tod^|^user2^|^Jane^|^Smith^|^jane@example.com^|^67890^|^+1678901234^|^1^|^102^|^200^|^scenario2
+1003^|^Active^|^large,dog^|^3^|^animal^|^pod^|^user3^|^Sam^|^Wood^|^sam@example.com^|^13579^|^+1135792468^|^1^|^103^|^200^|^scenario3
+1004^|^Inactive^|^small,cat^|^4^|^animal^|^dalCat^|^user4^|^Tom^|^Adams^|^tom@example.com^|^24680^|^+1246803579^|^0^|^104^|^400^|^scenario4
+1005^|^Inactive^|^medium,cat^|^5^|^animal^|^todCat^|^user5^|^Amy^|^Johnson^|^amy@example.com^|^36912^|^+1369120485^|^0^|^105^|^400^|^scenario5
+1006^|^Active^|^large,cat^|^6^|^animal^|^podCat^|^user6^|^Sara^|^Williams^|^sara@example.com^|^481216^|^+1481216024^|^1^|^106^|^200^|^scenario6
+1007^|^Inactive^|^small,dog^|^7^|^animal^|^dal2^|^user7^|^Max^|^Brown^|^max@example.com^|^729181^|^+1729181360^|^0^|^107^|^400^|^scenario7
+1008^|^Active^|^medium,dog^|^8^|^animal^|^tod2^|^user8^|^Lily^|^Miller^|^lily@example.com^|^1092143^|^+1109214307^|^1^|^108^|^200^|^scenario8
+1009^|^Inactive^|^large,dog^|^9^|^animal^|^pod2^|^user9^|^Jack^|^Davis^|^jack@example.com^|^1451626^|^+1145162608^|^0^|^109^|^400^|^scenario9
+1010^|^Active^|^small,cat^|^10^|^animal^|^dalCat2^|^user10^|^Emily^|^Wilson^|^emily@example.com^|^1821120^|^+1182112036^|^1^|^110^|^200^|^scenario10
