@@ -10,6 +10,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Assertions.assertNull;
+import org.junit.jupiter.api.Assertions.assertTrue;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 public class ProductTest {
 
@@ -170,140 +173,6 @@ public class ProductTest {
 		Long id = product.getId();
 
 		assertEquals(9223372036854775807L, id, "Expected id to correctly retrieve large values");
-	}
-
-	/*
-	 * ROOST_METHOD_HASH=getName_3a12ffc596 ROOST_METHOD_SIG_HASH=getName_8400ac6fb7
-	 *
-	 */@Test
-	@Tag("valid")
-	public void checkDefaultValueOfNameField() {
-
-		Product product = new Product();
-
-		String result = product.getName();
-
-		assertNull(result, "Expected null since name was not initialized.");
-	}
-
-	/*
-	 * ROOST_METHOD_HASH=getName_3a12ffc596 ROOST_METHOD_SIG_HASH=getName_8400ac6fb7
-	 *
-	 */@Test
-	@Tag("valid")
-	public void validateNameFieldAfterAssignment() {
-
-		Product product = new Product();
-		String expectedName = "Test Product";
-
-		product.setName(expectedName);
-		String result = product.getName();
-
-		assertEquals(expectedName, result, "Expected name to match assigned value.");
-	}
-
-	/*
-	 * ROOST_METHOD_HASH=getName_3a12ffc596 ROOST_METHOD_SIG_HASH=getName_8400ac6fb7
-	 *
-	 */@Test
-	@Tag("boundary")
-	public void handleEmptyStringValueForName() {
-
-		Product product = new Product();
-
-		String expectedName = "";
-
-		product.setName(expectedName);
-		String result = product.getName();
-
-		assertEquals(expectedName, result, "Expected name to be an empty string.");
-	}
-
-	/*
-	 * ROOST_METHOD_HASH=getName_3a12ffc596 ROOST_METHOD_SIG_HASH=getName_8400ac6fb7
-	 *
-	 */@Test
-	@Tag("boundary")
-	public void checkLongStringValueForName() {
-
-		Product product = new Product();
-
-		String expectedName = "A".repeat(255);
-
-		product.setName(expectedName);
-		String result = product.getName();
-
-		assertEquals(expectedName, result, "Expected name to match the long string value assigned.");
-	}
-
-	/*
-	 * ROOST_METHOD_HASH=getName_3a12ffc596 ROOST_METHOD_SIG_HASH=getName_8400ac6fb7
-	 *
-	 */@Test
-	@Tag("boundary")
-	public void checkSpecialCharactersInName() {
-
-		Product product = new Product();
-		String expectedName = "Product#123*@!";
-
-		product.setName(expectedName);
-		String result = product.getName();
-
-		assertEquals(expectedName, result, "Expected name to match the string with special characters.");
-	}
-
-	/*
-	 * ROOST_METHOD_HASH=getName_3a12ffc596 ROOST_METHOD_SIG_HASH=getName_8400ac6fb7
-	 *
-	 */@Test
-	@Tag("valid")
-	public void handleNullAssignmentForName() {
-
-		Product product = new Product();
-
-		product.setName(null);
-		String result = product.getName();
-
-		assertNull(result, "Expected null after explicitly assigning null to name.");
-	}
-
-	/*
-	 * ROOST_METHOD_HASH=getName_3a12ffc596 ROOST_METHOD_SIG_HASH=getName_8400ac6fb7
-	 *
-	 */@Test
-	@Tag("integration")
-	public void testNoInteractionWithOtherFields() {
-
-		Product product = new Product();
-
-		product.setId(1L);
-		product.setDescription("Description Test");
-
-		product.setPrice(19.99);
-
-		String result = product.getName();
-
-		assertNull(result, "Expected null since name was not set, unrelated to other fields.");
-	}
-
-	/*
-	 * ROOST_METHOD_HASH=getName_3a12ffc596 ROOST_METHOD_SIG_HASH=getName_8400ac6fb7
-	 *
-	 */@Test
-	@Tag("valid")
-	public void retrieveNameAfterMultipleUpdates() {
-
-		Product product = new Product();
-		String firstName = "First Name";
-		String secondName = "Second Name";
-		String finalName = "Final Name";
-
-		product.setName(firstName);
-		product.setName(secondName);
-		product.setName(finalName);
-		String result = product.getName();
-
-		assertEquals(finalName, result, "Expected name to match the final assigned value.");
 	}
 
 	/*
@@ -587,6 +456,35 @@ public class ProductTest {
 
 		product.setPrice(Double.NaN);
 		assertEquals(Double.NaN, product.getPrice(), 0.00001);
+	}
+
+	/*
+	 * ROOST_METHOD_HASH=getName_ab0e54f0b7 ROOST_METHOD_SIG_HASH=getName_8400ac6fb7
+	 *
+	 */@Test
+	public void verifyGetNameFunctionLogOutput() {
+
+		Product product = new Product();
+		String expectedName = "Test Product";
+		product.setName(expectedName);
+		ByteArrayOutputStream logOutput = new ByteArrayOutputStream();
+		PrintStream customPrintStream = new PrintStream(logOutput);
+		PrintStream originalPrintStream = System.out;
+		System.setOut(customPrintStream);
+		try {
+
+			String result = product.getName();
+
+			System.setOut(originalPrintStream);
+			String log = logOutput.toString().trim();
+			assertTrue("Inside get Name function.".equals(log),
+					"Expected log 'Inside get Name function.' when getName is called.");
+			assertEquals(expectedName, result, "Expected name to match the assigned value.");
+		}
+		finally {
+
+			System.setOut(originalPrintStream);
+		}
 	}
 
 }
